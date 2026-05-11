@@ -1,0 +1,34 @@
+{
+  "name": "@hackxit/mattpocock-skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Matt Pocock's engineering skills packaged for pi-coding-agent.",
+  "keywords": [
+    "pi-package",
+    "agent-skills",
+    "matt-pocock-skills"
+  ],
+  "scripts": {
+    "list-skills": "bash scripts/list-skills.sh",
+    "link-skills": "bash scripts/link-skills.sh",
+    "sync-upstream": "bash scripts/sync-upstream.sh"
+  },
+  "pi": {
+    "skills": [
+      "./skills/engineering/diagnose",
+      "./skills/engineering/grill-with-docs",
+      "./skills/engineering/triage",
+      "./skills/engineering/improve-codebase-architecture",
+      "./skills/engineering/setup-matt-pocock-skills",
+      "./skills/engineering/tdd",
+      "./skills/engineering/to-issues",
+      "./skills/engineering/to-prd",
+      "./skills/engineering/zoom-out",
+      "./skills/engineering/prototype",
+      "./skills/productivity/caveman",
+      "./skills/productivity/grill-me",
+      "./skills/productivity/handoff",
+      "./skills/productivity/write-a-skill"
+    ]
+  }
+}

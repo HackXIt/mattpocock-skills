@@ -22,22 +22,48 @@ If you want to keep up with changes to these skills, and any new ones I create, 
 
 [Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)
 
-## Quickstart (30-second setup)
+## Quickstart for pi-coding-agent
 
-1. Run the skills.sh installer:
+Install this fork as a global pi package:
+
+```bash
+pi install git:git@github.com:HackXIt/mattpocock-skills.git
+```
+
+Then restart pi or run `/reload`. The curated skills in `package.json` will be available as `/skill:<name>` commands, for example:
+
+```text
+/skill:setup-matt-pocock-skills
+/skill:grill-with-docs
+/skill:tdd
+```
+
+Run `/skill:setup-matt-pocock-skills` once per project. It will configure the repo's `AGENTS.md`/agent docs so the engineering skills know your issue tracker, triage label vocabulary, and domain-doc layout.
+
+### Keeping this fork up to date
+
+This repository keeps `origin` at `git@github.com:HackXIt/mattpocock-skills.git` and `upstream` at `https://github.com/mattpocock/skills.git`.
+
+Manual sync:
+
+```bash
+scripts/sync-upstream.sh
+# resolve conflicts if any, review pi-specific files, then:
+git push origin main
+pi update git:git@github.com:HackXIt/mattpocock-skills.git
+```
+
+A scheduled GitHub Actions workflow also opens a PR that merges `mattpocock/skills` into this pi-coding-agent fork.
+
+## Original upstream quickstart
+
+The upstream repository targets multiple agents through `skills.sh`:
 
 ```bash
 npx skills@latest add mattpocock/skills
 ```
 
-2. Pick the skills you want, and which coding agents you want to install them on. **Make sure you select `/setup-matt-pocock-skills`**.
-
-3. Run `/setup-matt-pocock-skills` in your agent. It will:
-   - Ask you which issue tracker you want to use (GitHub, Linear, or local files)
-   - Ask you what labels you apply to ticks when you triage them (`/triage` uses labels)
-   - Ask you where you want to save any docs we create
-
-4. Bam - you're ready to go.
+For this fork, prefer `pi install` above so pi-coding-agent loads the package manifest directly.
 
 ## Why These Skills Exist
 

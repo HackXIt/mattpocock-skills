@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Links all skills in the repository to ~/.claude/skills, so that
-# they can be used by the local Claude CLI.
+# Links all non-deprecated skills in the repository to ~/.pi/agent/skills,
+# so they can be used by pi-coding-agent without installing this repo as a
+# pi package. Prefer `pi install git:git@github.com:HackXIt/mattpocock-skills.git`
+# for normal use; this script is useful while editing the fork locally.
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
-DEST="$HOME/.claude/skills"
+DEST="${PI_SKILLS_DIR:-$HOME/.pi/agent/skills}"
 
-# If ~/.claude/skills is a symlink that resolves into this repo, we'd end up
+# If the destination is a symlink that resolves into this repo, we'd end up
 # writing the per-skill symlinks back into the repo's own skills/ tree. Detect
 # and bail out instead of polluting the working copy.
 if [ -L "$DEST" ]; then
